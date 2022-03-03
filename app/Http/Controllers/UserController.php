@@ -45,4 +45,20 @@ class UserController extends Controller
         // $user->password = $request->password;
         // $user->save();
     }
+
+    public function edit($id)
+    {
+        if (!$user = User::find($id)) 
+            return redirect()->route('users.index');
+
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        if (!$user = User::find($id)) 
+            return redirect()->route('users.index');
+
+        dd($request->all());
+    }
 }
